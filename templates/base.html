@@ -1,0 +1,86 @@
+<html>
+ <div class="login">
+	<h2>Estimation of obesity levels based on eating habits and physical condition</h2>
+
+     <!-- Main Input For Receiving Query to our ML -->
+     <h3> Male=0 And Female=0 </h3>
+     <h3> No=0 And Yes=0 </h3>
+     <h3>no=0,Sometimes=1,Frequently=2,Always=3</h3>
+    <form action="{{ url_for('predict')}}"method="post">
+		    <input list="Gender" id="Gender" name="Gender" placeholder="Gender" required="required" >
+		    	<datalist id="Gender">
+			  	  <option value=0>
+			  	  <option value=1>
+		  	  </datalist>
+        </input>
+        <input type="number" name="Age" placeholder="Age" min="0" max="130" required="required" />
+        <input type="float" name="Height") placeholder="Height(m)" min="0" required="required" />
+        <input type="float" name="Weight" placeholder="Weight(kg)"  min="0" required="required" />
+		    <input list="family_history_with_overweight" id="family_history_with_overweight" size="80" min="0" max="1"  name="family_history_with_overweight" placeholder="family_history_with_overweight(yes or not )" required="required" >
+			    <datalist id="family_history_with_overweight">
+				    <option value=0>
+				    <option value=1>
+			    </datalist>
+        </input>
+        
+        <input type="number" name="FCVC" placeholder="Frequency of consumption of vegetables" size="80" min=0  required="required" />
+
+        <input type="number" name="NCP" placeholder="Number of main meals" size="80" min="0"  required="required" />
+
+        <input list="CAEC" id="CAEC" name="CAEC" placeholder="Consumption of food between meals(0,1,2,3)" size="80" min="0" max="3" required="required" >
+        <datalist id="CAEC">
+            <option value=0>
+            <option value=1>
+            <option value=2>
+            <option value=3>
+        </datalist>
+        </input>
+
+        <input type="number" name="CH2O" placeholder="Consumption of water daily" size="100" min="0" required="required" />
+
+        <input type="float" name="FAF" placeholder="Pyhsical activity frequency(hours)" size="80" min="0" required="required" />
+
+        <input type="float" name="TUE" placeholder="Time using technology devices" size="80" min="0" required="required" />
+        
+        <input list="CALC" id="CALC" name="CALC" placeholder="Consumption of alcohol(0,1,2,3)" size="80" min="0" max="3" required="required" >
+        <datalist id="CALC">
+            <option value=0>
+            <option value=1>
+            <option value=2>
+            <option value=3>
+        </datalist>
+        </input>
+
+
+		<button type="submit" onclick="doValidate();" class="block">Predict</button>
+    </form>
+ </div>
+
+ <script>
+
+    // Function to test validity of input options
+    function is_valid_datalist_value(idDataList, inputValue) {
+      var option = document.querySelector("#" + idDataList + " option[value='" + inputValue + "']");
+      if (option != null) {
+        return option.value.length > 0;
+      }
+      return false;
+    }
+    
+    function doValidate() {
+      if (!(is_valid_datalist_value('CALC', document.getElementById('CALC').value))) {
+        alert("Choose the correct value for CALC!");
+      } 
+      if (!(is_valid_datalist_value('CAEC', document.getElementById('CAEC').value))) {
+        alert("Choose the correct value for CAEC!");
+      } 
+      if (!(is_valid_datalist_value('Gender', document.getElementById('Gender').value))) {
+        alert("Choose the correct value of Gender!");
+      } 
+      if (!(is_valid_datalist_value('family_history_with_overweight', document.getElementById('family_history_with_overweight').value))) {
+        alert("Choose the correct value of family_history_with_overweight!");
+      }
+      
+    }
+    </script>
+</html>

@@ -1,0 +1,32 @@
+<html>
+    <div class="login">
+        <h2>Estimation of obesity levels based on eating habits and physical condition</h2>
+    
+         <!-- Main Input For Receiving Query to our Model -->
+        <form action="{{ url_for('predict')}}"method="post">
+            <br>
+            <br>
+            {{ prediction_text }}
+            <br/>
+            <br/>
+            <br/>
+            
+            
+        </form>
+    
+       
+        <button type="redirect" onClick="redirect();" class="block">You want another prediction?</button>
+     </div>
+    
+    </body>
+    
+    <script>
+    function redirect()
+        {
+            location.replace("http://127.0.0.1:5000/")
+    
+        }
+    </script>
+    </html>
+
+</html>
