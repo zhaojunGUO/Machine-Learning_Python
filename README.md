@@ -1,4 +1,4 @@
-# python_for_analysis
+# Machine Learning by Python
 The project for ESILV_A4_DIA3 using the obesity level data by ZhaojunGUO and TianqiHuang
 Our data: Estimation of obesity levels based on eating habits and physical condition We have 2111 given data with 17 different variantes
 In the Jupyter-notebook,there is:
